@@ -1,0 +1,223 @@
+{
+  "groups": {
+    "glm52": {
+      "rounds": [
+        "2026-09-13-glm-5.2-s1-s22",
+        "2026-09-13-glm-5.2-s1-s22-round2",
+        "2026-09-13-glm-5.2-s1-s22-round3"
+      ],
+      "roundDeltas": [
+        1.5454545454545454,
+        1.6363636363636365,
+        5
+      ],
+      "effectDirectionConsistent": true,
+      "perArm": {
+        "noskill": {
+          "exactThreeRounds": 9,
+          "medianSpread": 10,
+          "meanSpread": 10,
+          "pairwiseIdentical": [
+            36,
+            66
+          ],
+          "widestTasks": [
+            {
+              "task": "S13-peer-range-vs-runtime",
+              "spread": 40,
+              "values": [
+                100,
+                80,
+                60
+              ]
+            },
+            {
+              "task": "S4-legacy-client-imports",
+              "spread": 38,
+              "values": [
+                63,
+                88,
+                50
+              ]
+            },
+            {
+              "task": "S14-link-install-lock-trap",
+              "spread": 20,
+              "values": [
+                100,
+                80,
+                80
+              ]
+            },
+            {
+              "task": "S20-msvc-flock-trap",
+              "spread": 20,
+              "values": [
+                80,
+                100,
+                92
+              ]
+            }
+          ]
+        },
+        "skill": {
+          "exactThreeRounds": 12,
+          "medianSpread": 0,
+          "meanSpread": 6.136363636363637,
+          "pairwiseIdentical": [
+            44,
+            66
+          ],
+          "widestTasks": [
+            {
+              "task": "S13-peer-range-vs-runtime",
+              "spread": 20,
+              "values": [
+                80,
+                80,
+                100
+              ]
+            },
+            {
+              "task": "S14-link-install-lock-trap",
+              "spread": 20,
+              "values": [
+                80,
+                80,
+                100
+              ]
+            },
+            {
+              "task": "S17-external-ui-plugin-onboarding-trap",
+              "spread": 20,
+              "values": [
+                90,
+                100,
+                80
+              ]
+            },
+            {
+              "task": "S8-release-routing-trap",
+              "spread": 20,
+              "values": [
+                100,
+                90,
+                80
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "glm53": {
+      "rounds": [
+        "2026-09-15-glm-5.3-s1-s22",
+        "2026-09-16-glm-5.3-s1-s22-r2",
+        "2026-09-17-glm-5.3-s1-s22-r3"
+      ],
+      "roundDeltas": [
+        1.9318181818181819,
+        3.1818181818181817,
+        6.590909090909091
+      ],
+      "effectDirectionConsistent": true,
+      "perArm": {
+        "noskill": {
+          "exactThreeRounds": 14,
+          "medianSpread": 0,
+          "meanSpread": 10.227272727272727,
+          "pairwiseIdentical": [
+            49,
+            66
+          ],
+          "widestTasks": [
+            {
+              "task": "S17-external-ui-plugin-onboarding-trap",
+              "spread": 100,
+              "values": [
+                100,
+                100,
+                0
+              ]
+            },
+            {
+              "task": "S4-legacy-client-imports",
+              "spread": 62.5,
+              "values": [
+                75,
+                12.5,
+                62.5
+              ]
+            },
+            {
+              "task": "S6-corridor-net-state",
+              "spread": 12.5,
+              "values": [
+                87.5,
+                87.5,
+                75
+              ]
+            },
+            {
+              "task": "S15-slot-error-boundary-crash",
+              "spread": 10,
+              "values": [
+                90,
+                100,
+                100
+              ]
+            }
+          ]
+        },
+        "skill": {
+          "exactThreeRounds": 14,
+          "medianSpread": 0,
+          "meanSpread": 4.886363636363637,
+          "pairwiseIdentical": [
+            49,
+            66
+          ],
+          "widestTasks": [
+            {
+              "task": "S4-legacy-client-imports",
+              "spread": 25,
+              "values": [
+                100,
+                75,
+                100
+              ]
+            },
+            {
+              "task": "S8-release-routing-trap",
+              "spread": 20,
+              "values": [
+                80,
+                90,
+                100
+              ]
+            },
+            {
+              "task": "S5-negative-naming",
+              "spread": 12.5,
+              "values": [
+                100,
+                100,
+                87.5
+              ]
+            },
+            {
+              "task": "S11-mermaid-lazyload-trap",
+              "spread": 10,
+              "values": [
+                100,
+                100,
+                90
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "interpretation": "Descriptive round-to-round stability of archived scores; not a designed reliability study. Rounds differ in judge and protocol details (see the supplement sections), so agreement reflects run-plus-judge stability combined."
+}
