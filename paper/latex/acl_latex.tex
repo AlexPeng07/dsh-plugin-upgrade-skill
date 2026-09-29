@@ -67,7 +67,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Agent skills package version-specific maintenance knowledge for coding agents, but a higher diagnostic score does not by itself show that the resulting migration advice satisfies the target version's contract. We study a shipped plugin-upgrade skill through an archive of 64 reports on 16 static migration tasks, with two attempts per condition and 328 criterion decisions. With the skill, mean recorded reward rises from 93.83 to 98.75, a gain of 4.92 points (95\% task-bootstrap interval [0.31, 10.86]); the gain is concentrated in one task, and eight task pairs are at the ceiling. Tracing every decision to its contract domain and reviewing ten reports in depth exposes grading errors that favor either arm; in one, a containment predicate that accepts the parent directory still receives full credit. Executable probes confirm this defect and show that a working teardown repair is excluded only by a narrower lifecycle rubric. Replacing the reviewed decisions keeps the estimate positive (4.61 to 5.39 points) but moves its interval to or across zero. Re-grading all 64 reports with judges from two other model families, without arm labels or prior scores, agrees with the original judge on 91.8\% and 95.7\% of decisions (weighted $\kappa=0.64$ and $0.72$) and gives gains of 10.63 and 6.09 points. The study contributes a traceable evaluation that connects aggregate reward to contract-level evidence and judge sensitivity, together with concrete review checks for migration advice. Executable end-to-end repairs, independent human annotation, and other frameworks are left to future work.
+Agent skills package version-specific maintenance knowledge for coding agents, but a higher diagnostic score does not by itself show that the resulting migration advice satisfies the target version's contract. We study a shipped plugin-upgrade skill through an archive of 64 reports on 16 static migration tasks, with two attempts per condition and 328 criterion decisions. With the skill, mean recorded reward rises from 93.83 to 98.75, a gain of 4.92 points (95\% task-bootstrap interval [0.31, 10.86]); the gain is concentrated in one task, and eight task pairs are at the ceiling. Tracing every decision to its contract domain and reviewing ten reports in depth exposes grading errors that favor either arm; in one, a containment predicate that accepts the parent directory still receives full credit. Executable probes confirm this defect and show that a working teardown repair is excluded only by a narrower lifecycle rubric. Replacing the reviewed decisions keeps the estimate positive (4.61 to 5.39 points) but moves its interval to or across zero. Re-grading all 64 reports with judges from two other model families, without arm labels or prior scores, agrees with the original judge on 91.8\% and 95.7\% of decisions (weighted $\kappa=0.64$ and $0.72$) and gives gains of 10.63 and 6.09 points. The study contributes a traceable evaluation that connects aggregate reward to contract-level evidence and judge sensitivity; a failure-mode taxonomy coded from the released 61-task incident corpus, in which nearly half the failures are silent and nine misdirect; and concrete review checks for migration advice. Executable end-to-end repairs, independent human annotation, and other frameworks are left to future work.
 \end{abstract}
 \noindent\textbf{Keywords:} software maintenance; plugin migration; agent skills; retrospective evaluation; LLM-as-a-judge
 
@@ -102,11 +102,12 @@ We investigate the shipped plugin-upgrade skill for \framework{}, linking task c
 \item RQ3: How do resource accounting and grading sensitivity qualify the apparent benefit?
 \end{enumerate}
 
-The study makes three contributions.
+The study makes four contributions.
 \begin{itemize}
 \item An auditable within-configuration comparison that links 64 answers to version-pinned tasks, original criterion judgments, and resource records (Sections~\ref{sec:setting} and~\ref{sec:focal-method}).
 \item A two-level account of grading: complete contract-stratified accounting of all 328 decisions, a bounded review that locates judgments missing an operational requirement, and a blinded cross-family re-grading that measures how much the result depends on the judge (Sections~\ref{sec:bounded_review}--\ref{sec:contracts}, \ref{sec:rq2}, and~\ref{sec:rq3}).
 \item Executable predicate and timer checks that separate an observed defect from an alternative repair excluded by a narrower rubric, and three review questions for maintainers derived from these cases (Sections~\ref{sec:mechanisms} and~\ref{sec:review_questions}).
+\item A failure-mode taxonomy of plugin-ecosystem breaking changes, author-coded from the 61 incident-derived tasks of the released corpus: nearly half fail silently and nine misdirect, naming the failure classes that aggregate scores and presence guards under-detect (Section~\ref{sec:taxonomy}, Appendix~\ref{app:taxonomy}).
 \end{itemize}
 The findings concern one plugin framework and static diagnosis; Section~\ref{sec:threats} discusses validity and Section~\ref{sec:future} the studies that would extend them.
 
@@ -338,6 +339,18 @@ The cases motivate three checks for maintainers reviewing migration advice. For 
 
 These checks can be applied to an individual answer without relying on its total score. Their evidence differs in kind: the S11 predicate was executed directly, S18 was examined through a minimal timer reconstruction with positive and negative controls, and S6 is a static assessment against the recorded contract. They are review questions transferable to other projects; how often the underlying defects occur there, and whether building the checks into an agent or grader improves outcomes, are open questions (Section~\ref{sec:future}).
 
+\subsection{A failure-mode taxonomy for plugin-ecosystem breaking changes}
+\label{sec:taxonomy}
+
+The 65 benchmark tasks were not sampled from an abstract generator: 61 encode concrete incidents, most drawn from a maintained plugin fleet crossing the same host releases, and four are procedural controls. Coding each incident task by the loudness of its first observable failure (silent, misdirected, loud) and by its blast radius (plugin-local, co-tenant, system) yields a taxonomy that explains why contract-level inspection, rather than aggregate scoring, is the right evaluation unit (Table~\ref{tab:taxonomy}; the full per-task coding is Table~\ref{tab:taxonomy_full}).
+
+Nearly half of the incident tasks (28 of 61) fail silently: no exception, no console entry, and in the S23 pattern a four-check compatibility guard still passes because the removed field sits inside a snapshot payload rather than a service member. The largest single cell --- silent and plugin-local, 26 tasks --- is precisely the class that presence guards, crash logs, and aggregate reward all under-detect. Nine tasks are misdirected: the observable failure implicates the wrong component, as when one plugin's render-time throw unmounts an innocent co-tenant through a shared error boundary (S15, S24) or an in-place upgrade surfaces as file-lock errors (S12). Misdirected failures break the symptom-to-defect mapping that both human maintainers and LLM judges rely on, and they are where incorrect-but-plausible migration advice is hardest to catch. Shared-radius failures (co-tenant or system, nine tasks) are rare but dominate attribution errors.
+
+The taxonomy is author-coded from task provenance (single-coder, not independently annotated), so we treat the cell counts as descriptive structure rather than estimated frequencies. Its role is interpretive: it names the failure classes that make a contract-stratified audit necessary and gives task authors a coverage target --- a migration corpus that only exercises loud, plugin-local breaks would systematically overstate what diagnostic scores measure.
+
+\input{../generated/failure-taxonomy-summary.tex}
+
+
 \subsection{Implications for evaluating maintenance skills}
 A maintenance-skill evaluation should state which endpoint it measures: locating applicable knowledge, supplying contract-consistent advice, or completing a verified repair. The focal archive measures graded static advice. S1's card-mapping reward also captures access to organized facts (Section~\ref{sec:rq2}). Reporting task-level changes and the contract behind each selected shortfall makes these distinctions visible without treating the rubric as a substitute for execution.
 
@@ -375,7 +388,7 @@ The archive and tooling released with this study make several follow-up studies 
 \paragraph{Prospective replication and transfer.} A temporal-holdout split and its execution plan are specified in the repository (\path{benchmark/holdouts}); running it, and applying the same protocol to other plugin frameworks, would test whether the effect and the review questions of Section~\ref{sec:review_questions} transfer beyond this setting, and whether adding those questions to an agent or grader improves outcomes.
 
 \section{Conclusion}
-In an archived 16-task comparison, making a plugin-upgrade skill available raised recorded reward by 4.92 points, with the gain concentrated in one task and bounded by ceiling effects. The more consequential finding concerns how such gains should be read. API availability and responsibility, exact boundary coverage, and process liveness cannot be inferred from a plausible recommendation or an aggregate score; they have to be checked at the contract the advice is meant to satisfy. Complete accounting of all 328 decisions, a bounded review, and executable probes located a missed boundary defect and an alternative repair excluded by a narrower rubric. Two blinded judges from other model families preserved the positive direction of the gain while changing its size. By keeping contracts, answers, scores, and counterexamples linked, the study makes both the observed benefit and its open correctness questions inspectable, and provides a reusable basis for the human validation, executable repairs, and cross-project replication outlined above.
+In an archived 16-task comparison, making a plugin-upgrade skill available raised recorded reward by 4.92 points, with the gain concentrated in one task and bounded by ceiling effects. The more consequential finding concerns how such gains should be read. API availability and responsibility, exact boundary coverage, and process liveness cannot be inferred from a plausible recommendation or an aggregate score; they have to be checked at the contract the advice is meant to satisfy. Complete accounting of all 328 decisions, a bounded review, and executable probes located a missed boundary defect and an alternative repair excluded by a narrower rubric. The released task corpus adds a structural reading of the domain: coded by failure loudness and blast radius, 28 of 61 incident tasks fail silently and nine misdirect --- the classes that presence guards, crash logs, and aggregate scores all under-detect. Two blinded judges from other model families preserved the positive direction of the gain while changing its size. By keeping contracts, answers, scores, and counterexamples linked, the study makes both the observed benefit and its open correctness questions inspectable, and provides a reusable basis for the human validation, executable repairs, and cross-project replication outlined above.
 
 \section*{Acknowledgments}
 We thank the other contributors to the open-source repository, including the GitHub users whiteicey, AdamPlatin123, and HuanLinOTO, for benchmark tasks, experiment runs, and migration cards.
@@ -392,6 +405,11 @@ AI tools (Codex and ChatGPT) assisted with source inspection, analysis code, ini
 \clearpage
 \section{Task-level focal results}
 \input{../generated/focal-task-table.tex}
+
+\section{Failure-mode taxonomy per-task coding}\label{app:taxonomy}
+Per-task coding behind Table~\ref{tab:taxonomy}; regenerated by \path{paper/scripts/generate-failure-taxonomy.mjs} (\texttt{--check} mode wired into CI), which also asserts that every \path{benchmark/tasks} entry carries a coding.
+
+\input{../generated/failure-taxonomy-table.tex}
 
 \section{Historical and supplementary context}\label{app:historical}
 \subsection{Historical paired summaries}\label{sec:paired}
