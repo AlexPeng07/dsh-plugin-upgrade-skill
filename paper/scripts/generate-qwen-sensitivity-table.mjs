@@ -177,7 +177,7 @@ export function renderQwenSensitivityTableTex(analysis) {
     `% Source: ${INPUT_PATH}`,
     '% Regenerate with: npm run generate:qwen-sensitivity',
     '',
-    '\\begin{table*}[t]',
+    '\\begin{table}[!htbp]',
     '\\centering',
     '\\small',
     '\\setlength{\\tabcolsep}{4pt}',
@@ -204,7 +204,7 @@ export function renderQwenSensitivityTableTex(analysis) {
     '\\end{tabular}',
     `\\caption{Qwen3.8-27B (medium) paired run --- timeout/termination state and missing-score sensitivity (${main.tasks} tasks $\\times$ 2 arms $\\times$ ${analysis.completeness.attemptsPerArm} intended attempts; ${unscoredCount} unscored slot${unscoredCount === 1 ? '' : 's'}). ${boundaryNote} ${timeoutNote} ${postHocNote} All quantities are descriptive of this historical run; none is a causal claim.}`,
     '\\label{tab:qwen-sensitivity}',
-    '\\end{table*}',
+    '\\end{table}',
     '',
   ].join('\n')
 }

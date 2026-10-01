@@ -1,0 +1,432 @@
+{
+  "corpusCommit": "e91f17b",
+  "corpusTasks": 65,
+  "submittedCommit": "094a81a",
+  "submittedTasks": 63,
+  "postSubmissionTasks": [
+    "S23-passing-compat-guard-trap",
+    "S24-dock-cotenant-crash-trap"
+  ],
+  "coding": [
+    {
+      "id": "S1-static-scan",
+      "loudness": "procedural",
+      "radius": "none",
+      "basis": "coverage scan exercise, no single incident"
+    },
+    {
+      "id": "S2-negative-scan",
+      "loudness": "procedural",
+      "radius": "none",
+      "basis": "negative control, no incident"
+    },
+    {
+      "id": "S5-negative-naming",
+      "loudness": "procedural",
+      "radius": "none",
+      "basis": "negative control, no incident"
+    },
+    {
+      "id": "S10-paste-rename-and-version-chip",
+      "loudness": "procedural",
+      "radius": "none",
+      "basis": "post-release follow-up procedures"
+    },
+    {
+      "id": "S3-snapshot-migration",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "legacy snapshot reads degrade without errors"
+    },
+    {
+      "id": "S4-legacy-client-imports",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "module resolution fails at build/boot"
+    },
+    {
+      "id": "S6-corridor-net-state",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "intermediate-state defense mis-handles new state"
+    },
+    {
+      "id": "S7-unpublished-cohort",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "packaging trap: installs locally, absent on registry"
+    },
+    {
+      "id": "S8-release-routing-trap",
+      "loudness": "misdirected",
+      "radius": "local",
+      "basis": "install failure blames mirror; cause is tag routing"
+    },
+    {
+      "id": "S9-composer-coordinate-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "first use works, later ones silently misbehave"
+    },
+    {
+      "id": "S11-mermaid-lazyload-trap",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "chunk 404 and window errors at load"
+    },
+    {
+      "id": "S12-global-upgrade-ebusy-trap",
+      "loudness": "misdirected",
+      "radius": "system",
+      "basis": "EBUSY/MSVC errors blame locks; cause is live-process self-upgrade"
+    },
+    {
+      "id": "S13-peer-range-vs-runtime",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "installs clean, crashes at runtime start"
+    },
+    {
+      "id": "S14-link-install-lock-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "link edits silently never reach the GUI"
+    },
+    {
+      "id": "S15-slot-error-boundary-crash",
+      "loudness": "loud",
+      "radius": "cotenant",
+      "basis": "one entry's throw unmounts the whole shared dock"
+    },
+    {
+      "id": "S16-self-host-upgrade-trap",
+      "loudness": "misdirected",
+      "radius": "system",
+      "basis": "npm replaces files under the running host itself"
+    },
+    {
+      "id": "S17-external-ui-plugin-onboarding-trap",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "raw-ESM bundle fails the module loader"
+    },
+    {
+      "id": "S18-terminal-sprite-render-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "phantom pixels, no error"
+    },
+    {
+      "id": "S19-phantom-update-stale-host",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "update badge misleads about currency"
+    },
+    {
+      "id": "S20-msvc-flock-trap",
+      "loudness": "loud",
+      "radius": "system",
+      "basis": "native build dies, environment-level"
+    },
+    {
+      "id": "S21-resource-service-unavailable-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "document tab opens but content silently fails"
+    },
+    {
+      "id": "S22-duplicate-insert-boot-crash-trap",
+      "loudness": "loud",
+      "radius": "system",
+      "basis": "duplicate loader id crashes boot"
+    },
+    {
+      "id": "S23-passing-compat-guard-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "field-level removal passes presence guards"
+    },
+    {
+      "id": "S24-dock-cotenant-crash-trap",
+      "loudness": "loud",
+      "radius": "cotenant",
+      "basis": "shared drawer boundary unmounts innocent co-tenant"
+    },
+    {
+      "id": "M1-host-migration",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "plugin fails to start on new host"
+    },
+    {
+      "id": "M2-optional-dep-trap",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "unconditional import of optional dep"
+    },
+    {
+      "id": "M3-session-projection",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "degraded behavior without declared projection service"
+    },
+    {
+      "id": "M4-peer-prerelease-range",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "semver prerelease exclusion installs clean"
+    },
+    {
+      "id": "M5-token-auth-smoke",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "channel works, host auth silently missing"
+    },
+    {
+      "id": "M6-sleep-tool",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "tool shape drifts silently"
+    },
+    {
+      "id": "M7-d399-overlay",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "inject names deleted runtime, boot-fatal"
+    },
+    {
+      "id": "M8-brand-text",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "moved store engine and stale peer"
+    },
+    {
+      "id": "M9-mcpanel",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "removed runtime in inject, boot-fatal"
+    },
+    {
+      "id": "M10-tools-tree",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "service moved, missing silently"
+    },
+    {
+      "id": "M11-sidebar-spur",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "Context import from deleted runtime"
+    },
+    {
+      "id": "M12-interpreters-card",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "renamed Settings service unresolved"
+    },
+    {
+      "id": "M13-repository-plugins-removal",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "removed plugin shape never loads"
+    },
+    {
+      "id": "M14-service-renames-0812",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "pre-0812 service names fail resolution"
+    },
+    {
+      "id": "H1-plane-trap",
+      "loudness": "misdirected",
+      "radius": "local",
+      "basis": "source comments steer toward a fatal change"
+    },
+    {
+      "id": "H2-baseline-trap",
+      "loudness": "misdirected",
+      "radius": "local",
+      "basis": "pre-existing red test predates the migration"
+    },
+    {
+      "id": "H3-client-plane",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "missing required declaration refuses load"
+    },
+    {
+      "id": "H4-tsbuildinfo-trap",
+      "loudness": "misdirected",
+      "radius": "local",
+      "basis": "stale build artifact implicates deleted API"
+    },
+    {
+      "id": "H5-runtime-export-drift",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "green locally, drifts at runtime"
+    },
+    {
+      "id": "H6-remote-error-trap",
+      "loudness": "misdirected",
+      "radius": "local",
+      "basis": "comment pins old error handling"
+    },
+    {
+      "id": "H7-locale-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "display-text anchoring breaks silently"
+    },
+    {
+      "id": "H8-fire-drill",
+      "loudness": "misdirected",
+      "radius": "cotenant",
+      "basis": "three plugins, three trap states in one release"
+    },
+    {
+      "id": "H9-dsh-web-alpha2",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "real-repo migration, import surface fails loudly"
+    },
+    {
+      "id": "H10-browser-activation-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "manifest lists it, bundle 200s, never activates"
+    },
+    {
+      "id": "H11-dual-cohort-rpc",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "passes mocks, fails the real host"
+    },
+    {
+      "id": "H12-remote-result-boundary-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "error vocabulary right, control flow wrong"
+    },
+    {
+      "id": "H13-ghost-host-trap",
+      "loudness": "silent",
+      "radius": "system",
+      "basis": "disk upgraded, host process still old"
+    },
+    {
+      "id": "H14-mineru-api",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "channel 404s after apiPrefix change"
+    },
+    {
+      "id": "H15-locale-pack",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "monkey-patch target moves silently"
+    },
+    {
+      "id": "H16-history-dock",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "contenteditable needs capture-phase listener"
+    },
+    {
+      "id": "H17-merge-calls",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "deleted derivations fail imports"
+    },
+    {
+      "id": "H18-blame-bubbles",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "deleted facade fails the call"
+    },
+    {
+      "id": "H19-workspace-ya",
+      "loudness": "silent",
+      "radius": "cotenant",
+      "basis": "official disabled UI must be taken over via slots"
+    },
+    {
+      "id": "H20-session-events-ledger",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "removed getter throws on iteration"
+    },
+    {
+      "id": "H21-question-answerer-waterfall",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "single-seat registration silently degrades"
+    },
+    {
+      "id": "H22-dsh-data-agent-alpha2",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "real-repo migration, loud import breaks"
+    },
+    {
+      "id": "H23-storage-domain-version-compat-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "domain bump silently opens old data"
+    },
+    {
+      "id": "H24-invalid-record-salvage-trap",
+      "loudness": "misdirected",
+      "radius": "local",
+      "basis": "salvage logic implicates the wrong record"
+    },
+    {
+      "id": "H25-session-seed-boundary-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "seed boundary semantics drift"
+    },
+    {
+      "id": "H26-notlisted-trap",
+      "loudness": "silent",
+      "radius": "local",
+      "basis": "installs cleanly, never registers"
+    },
+    {
+      "id": "H27-undeclared-import-trap",
+      "loudness": "loud",
+      "radius": "local",
+      "basis": "ERR_MODULE_NOT_FOUND at load"
+    }
+  ],
+  "incidentTasks": 61,
+  "proceduralTasks": 4,
+  "counts": {
+    "silent": {
+      "local": 26,
+      "cotenant": 1,
+      "system": 1
+    },
+    "misdirected": {
+      "local": 6,
+      "cotenant": 1,
+      "system": 2
+    },
+    "loud": {
+      "local": 20,
+      "cotenant": 2,
+      "system": 2
+    }
+  },
+  "byLoudness": {
+    "silent": 28,
+    "misdirected": 9,
+    "loud": 24
+  },
+  "byRadius": {
+    "local": 52,
+    "cotenant": 4,
+    "system": 5
+  },
+  "interpretation": "Descriptive characterization of the task corpus pinned at corpusCommit. Coded by a single coder (one author) from task provenance (fleet incidents and release diffs; some tasks are composite or constructed exercises, e.g. H8); not independently annotated. Counts describe this corpus, not ecosystem frequencies, and are not linked to scores or judge errors. loudness=silent|misdirected|loud, radius=local|cotenant|system."
+}

@@ -1,0 +1,413 @@
+{
+  "rubricCommit": "e0a9ff5",
+  "scorerSha256": "be5a6b2464f2fc875b42db2cc579da9d62367cbdddd6b6373e673993e43a9cfa",
+  "checkedAnswers": 44,
+  "model": "openrouter/stealth/union-alpha",
+  "modelNotes": "anonymous internal-beta via OpenRouter; 256K context; pricing 0 at run time; knowledge cutoff undisclosed; snapshot date 2026-09-17",
+  "identityDisclosed": "2026-09-18: stealth/union-alpha claimed by Unbiased (unbiased.ai) as Pareto (composite model; paid openrouter/unbiased/pareto). All run data was collected 2026-09-17 under the anonymous free stealth window; scores and judging are unchanged, provenance description only.",
+  "identityStatus": "Anonymous at run time; vendor-claimed identity disclosed afterwards is unverified (composite/routed model); the free stealth route cannot be re-run.",
+  "judge": "GLM-5.3-Flash as declared by the harness (44/44 verdicts), run through dsh web in-session subagents rather than the focal ZCode host",
+  "exposedTasks": [
+    "S1-static-scan",
+    "S2-negative-scan",
+    "S3-snapshot-migration",
+    "S8-release-routing-trap",
+    "S17-external-ui-plugin-onboarding-trap",
+    "S20-msvc-flock-trap"
+  ],
+  "full": {
+    "tasks": 22,
+    "totals": {
+      "noskill": 2157.5,
+      "skill": 2190
+    },
+    "meanDelta": 1.4772727272727273,
+    "nonZeroTasks": 5,
+    "seed": 20260907,
+    "bootstrap": {
+      "replicates": 10000,
+      "ci95": [
+        -0.7954545454545454,
+        4.318181818181818
+      ]
+    },
+    "wilcoxon": {
+      "n": 5,
+      "nZero": 17,
+      "wPlus": 11.5,
+      "z": 0.9481996460700349,
+      "pTwoSided": 0.34302780624571794
+    },
+    "rows": [
+      {
+        "task": "S1-static-scan",
+        "noskill": 95,
+        "noskillReportSha256": "d36af1c744d1370eefb72a86b1ce19d504d772cd8e9403acd1344be39c376bd5",
+        "noskillVerdictSha256": "ee19e522da9d96c53440df9add8621e046264eec34fb8f5dff241d23e0d22061",
+        "skill": 100,
+        "skillReportSha256": "c96ed75e3371f186da525a646ae352731f0f35f2b74ea01e8097199ed9cc4749",
+        "skillVerdictSha256": "91c02e93aecce011a4e16ad2e8f33d92aaf5c585be9948fa2f3df73a1a95ab8e"
+      },
+      {
+        "task": "S10-paste-rename-and-version-chip",
+        "noskill": 100,
+        "noskillReportSha256": "5ee7fc593b9eccbc7b770f0a9b6238444f1b6666500fb027ed23118dd01ed5a3",
+        "noskillVerdictSha256": "5bae2a9b5e399e6d8b0b67c78692c5870b4274692f61f3dd44e05a925bbb70c2",
+        "skill": 100,
+        "skillReportSha256": "8c3b253a063b75d399fdbc8a24bddf6a8fe175046ef4e670767911ff71558df2",
+        "skillVerdictSha256": "62cc4cf983457a4b0cf7fe4cd256527982e152389c1f1b03b631d6d02fad577b"
+      },
+      {
+        "task": "S11-mermaid-lazyload-trap",
+        "noskill": 100,
+        "noskillReportSha256": "cf231d8d260b3477f6dfef74836b7ccb7cf41e82f03cc482644acb55177765d7",
+        "noskillVerdictSha256": "85d81a37fe1a542a5a3551d0687bc7a72e39f97f69deb0078374dbae67852976",
+        "skill": 100,
+        "skillReportSha256": "52214658aaabd0a306b9f8235e160174f44e0fd566c41fd19d2d22990eedb84a",
+        "skillVerdictSha256": "9a74b6d74e70ab9a4a382b005600a038917e3cdb23f7aa79c16170552845cc28"
+      },
+      {
+        "task": "S12-global-upgrade-ebusy-trap",
+        "noskill": 100,
+        "noskillReportSha256": "5b4f66e0b18cf3f333df3bf4fd18614319805d7b3a7ceea3eaf6bc4691705ac5",
+        "noskillVerdictSha256": "2fb72330d6b265171626df3871483a87565e79ec754219ad6fc761394cbc8920",
+        "skill": 100,
+        "skillReportSha256": "37c75850db4c2c07ca56795efa44ab7912f59a82c738d92c1dfd7b534d110b2c",
+        "skillVerdictSha256": "9609c6dabb313d3fe5a14092f1afce3feb0b3e0ffcea41d64599e1d45ee690cf"
+      },
+      {
+        "task": "S13-peer-range-vs-runtime",
+        "noskill": 100,
+        "noskillReportSha256": "c598e3fa8e0bec41ace9f2fd2c0d9ba061110d8d02b3a96c50676313e4e1f1ad",
+        "noskillVerdictSha256": "0acf0feb21667ada8aaac5b6d1de7030f63188db4713af4b68c34b9570b56d30",
+        "skill": 100,
+        "skillReportSha256": "32a542baf0b3776821ffcfc7e9f36c32cdb4ddcd18663814808e11dbbfa30b4e",
+        "skillVerdictSha256": "88be3d362a62a118e733b99c92cd3ca4463385c2f41c46440364fa3d707e73ab"
+      },
+      {
+        "task": "S14-link-install-lock-trap",
+        "noskill": 100,
+        "noskillReportSha256": "c279456986f85be66a4c9da813a74b9a4adf8bf997d8ce47e7e5c801583320ec",
+        "noskillVerdictSha256": "3f6fb342a566fc9a9a83af20bf885d48699fd7b0a4ab1df239e19d5448699c5c",
+        "skill": 100,
+        "skillReportSha256": "610ae55e20c1f89f7e8dd58131a32f2c7c8a1d75d58fecd3f24ef51780b98209",
+        "skillVerdictSha256": "0b497ec1e264c9b0c67053512ea9c82991bf6e466f119dbcf3a025eca93159d5"
+      },
+      {
+        "task": "S15-slot-error-boundary-crash",
+        "noskill": 100,
+        "noskillReportSha256": "7687f5e827bf9867cab3d04f49a85d3ac9f00a2e57bac13bcb093d09b2af00aa",
+        "noskillVerdictSha256": "045315d6c587024b4bb2b3db3f840ebc5640d5738375039858360e2147b78b2d",
+        "skill": 100,
+        "skillReportSha256": "d67a2de60ac58e929d99aa9d5b3dd95f2fc40af23c24cd78876e9091e63ab0f9",
+        "skillVerdictSha256": "09f5e039e4c20d7aeb3454c54f2db7a8350dbd185b46e26e29006720474645c3"
+      },
+      {
+        "task": "S16-self-host-upgrade-trap",
+        "noskill": 100,
+        "noskillReportSha256": "d5b3a60fbf66f8d5726b31d1bdb391f6cecaba0ad414bcd94d72e538b3ae86d0",
+        "noskillVerdictSha256": "845effcc009b5b55e32b6ce24dfbbe90a676eb67f6bea569bde2b281c7fcb840",
+        "skill": 100,
+        "skillReportSha256": "3a096b3add20f0a7b7c8afe48953140f3a98c950080d1041932e405cbffcea90",
+        "skillVerdictSha256": "d7bcdb59f85a66455cd1a79b129034f9b150ecda891281ff09ce89b3c5086233"
+      },
+      {
+        "task": "S17-external-ui-plugin-onboarding-trap",
+        "noskill": 100,
+        "noskillReportSha256": "315e23646bf73c076ceb3c59259534faa3081d5a9ef1fffe9a1fdba32936a039",
+        "noskillVerdictSha256": "04a4b00a2764b833563611744dc09e0cbef15ae041c604a330360071f959314f",
+        "skill": 100,
+        "skillReportSha256": "fd01fe4247cd34f39e806d14974ae659ea601dc61d1b62869f5b1fc38677570b",
+        "skillVerdictSha256": "fe456246808ff8c14e427ac1f9c4dc4d48b4ff57e519c736ab2f916a65fb7782"
+      },
+      {
+        "task": "S18-terminal-sprite-render-trap",
+        "noskill": 100,
+        "noskillReportSha256": "cac06a4ff1f6942edb8cc3f56bb9bc2f581617160fed0e69729fccf1616bff4c",
+        "noskillVerdictSha256": "842049b1e8c0ad29c4fca78c86ff7d8c22bf101b5aafb3f3bf4982cb7f855d66",
+        "skill": 90,
+        "skillReportSha256": "a1d172ab776ced36919ca06b946bc175d6c8a11ea5dca782dab6e70586368571",
+        "skillVerdictSha256": "1db27862996842eadde961741e7fef213f45433aca6cf2fe6d664db1206f2315"
+      },
+      {
+        "task": "S19-phantom-update-stale-host",
+        "noskill": 100,
+        "noskillReportSha256": "1c109cf027925e4c85306acecfbc0e1c531436a2281a6411139f7f4543712488",
+        "noskillVerdictSha256": "511d79af4d790a381f400619f914fda9f95e45b65b7d4beadb2becdbd4a071f5",
+        "skill": 100,
+        "skillReportSha256": "ec4f559d41460e093f8c7b54980d347730e0d0d643db49b946529896f11583d0",
+        "skillVerdictSha256": "3e3896bc54485a10152610f0ceca4de01ad8e635e39d5c31cccc973dcbc1d572"
+      },
+      {
+        "task": "S2-negative-scan",
+        "noskill": 100,
+        "noskillReportSha256": "cbb8af8a7620e1be685495528893f8b04df82d3c9b4d7af79f47370855641d90",
+        "noskillVerdictSha256": "c782a2b062548d12188ea4d4a64d74bb0c26055b7346077cc253133ef9254bf8",
+        "skill": 100,
+        "skillReportSha256": "97beb95f6e01a47d30905eb87beb8eaa4e9efbbd2f5609e8a1beaf63966d4623",
+        "skillVerdictSha256": "aa634e474a53b62c714a6a89bb74ef46afda673d260d4911a896a13e626775b1"
+      },
+      {
+        "task": "S20-msvc-flock-trap",
+        "noskill": 97.5,
+        "noskillReportSha256": "d55729b03b5790f01804a9ab9143f1b67a38886c3fb1db5cdb008984f2d25e3d",
+        "noskillVerdictSha256": "933936ba5a5193c3fb5819c273c4eb9072b32e8a803dcc16f1fdf697a8269360",
+        "skill": 100,
+        "skillReportSha256": "c0ac48f9ed6378c7161be6af02e62521cb911cb9551dbf10ffacfb1cc34ab88f",
+        "skillVerdictSha256": "9b0c4199e84d6dc3085c5e5a5d89cdde37945a9f2f2977d0d266866d467820f8"
+      },
+      {
+        "task": "S21-resource-service-unavailable-trap",
+        "noskill": 100,
+        "noskillReportSha256": "e0d776583a67a126ba597cc5689afcb6026647c2a2f4cee1190640fd61d0d8a6",
+        "noskillVerdictSha256": "b6571fb709237a43b7e2712a04b1208edf468a5a2f42ede53cea068a73f1a556",
+        "skill": 100,
+        "skillReportSha256": "a941b100ea814325eb6dcee444e9f70016823409c1f301c58bd1f2f6e4813c44",
+        "skillVerdictSha256": "f17496cf2d9100aee0710b41fd31f5c7b95e5d787d0e85b5b7844a0bcea16ed4"
+      },
+      {
+        "task": "S22-duplicate-insert-boot-crash-trap",
+        "noskill": 100,
+        "noskillReportSha256": "2ac0a8c73f30aee493d1206de93dcb313be87503dd7d428d8afdcc6d03e6ad1c",
+        "noskillVerdictSha256": "b59b0ffe650c240142f828d55a956f4fe2e6530d29037827e71b8768f725c70a",
+        "skill": 100,
+        "skillReportSha256": "1f6ddc3516e4d7eec3785f770d51aa61dbd4a300fe4a5f5c0180aced4509cfab",
+        "skillVerdictSha256": "40d64f1170d27b3ea491fd28148288b9224b13d344c002f4162eaae7902c7c4b"
+      },
+      {
+        "task": "S3-snapshot-migration",
+        "noskill": 100,
+        "noskillReportSha256": "bdccf4fab8a28eacd85b9d3c373025b7b407e26b1d1be87805d11bb54659c245",
+        "noskillVerdictSha256": "d250f94a0f7a0dd5a9da9633d05dddfa54aba43dcdbc40949fd72bd79faa61a2",
+        "skill": 100,
+        "skillReportSha256": "e2f0b4467793b62c35c519f8bc81008924314e10fce7f49d4a91879d58ddbe3e",
+        "skillVerdictSha256": "2d1e82d6a485c43abde512ffdd3c86136b2b24aa05c537e319b65ea68444da1f"
+      },
+      {
+        "task": "S4-legacy-client-imports",
+        "noskill": 100,
+        "noskillReportSha256": "dea29589e27e24e6359c8185e8cbbf7acaed757a1c17f44dd476425da5910e5f",
+        "noskillVerdictSha256": "4dd261b13b26b1f0ab38e466088a31284473498681ea0171c2549e04a2850b18",
+        "skill": 100,
+        "skillReportSha256": "6d376486ea3790bec04c78e7216b083d894592fd0814576af366adf2fc567a8a",
+        "skillVerdictSha256": "cff978d1b9254f34519a21167cda854d184c60d58f10247e00c57b07e105fbc0"
+      },
+      {
+        "task": "S5-negative-naming",
+        "noskill": 100,
+        "noskillReportSha256": "c081a6236f2d3cc71fe5a1c6b30c2d0c4650d30803cfb2359c963aa745c466a4",
+        "noskillVerdictSha256": "7e9a4be6516c538b9d06adebfe674fa3d6e1e1a8661dac0f0e0bbca856110124",
+        "skill": 100,
+        "skillReportSha256": "3398c134dd308b65d64bae294d8f8cc9867810b13d4de4595cff0fc67104ae4c",
+        "skillVerdictSha256": "9ef0421f925827988e00cd2ae333e38033c766c7b43cfafbd845fa6ae1e2c0b1"
+      },
+      {
+        "task": "S6-corridor-net-state",
+        "noskill": 75,
+        "noskillReportSha256": "803d3d73bc73d499948ef5ff6e2ba6c057bcb95ba9461f6ecd13982a6f49edfb",
+        "noskillVerdictSha256": "8a3c64e4ba99fc2b3908df44630d97322d5f59c5aa8ac754ff40f4ce075a8b4f",
+        "skill": 100,
+        "skillReportSha256": "61aa6afcb8f49240a364518d405422ef46438063bfab581c1e4156b325c3d375",
+        "skillVerdictSha256": "f609587420f192dd990ad8d47b2490b885552577063a04f446a24d4cc0b634ca"
+      },
+      {
+        "task": "S7-unpublished-cohort",
+        "noskill": 100,
+        "noskillReportSha256": "93c082b270b8887d3e8f9603108b03dc65f93bbf0c1b61a9523d618971b66a40",
+        "noskillVerdictSha256": "d3314e96759847427776eb57b74650f9ac050699cf8334daa084012c740d262e",
+        "skill": 100,
+        "skillReportSha256": "de647c182ce444ae2cf2a0b10f2d49ced87f04772eb98d688be6311cc12080e5",
+        "skillVerdictSha256": "e011b233c26cf9f98b1e1e0e6049e52cc94af5f5255e27b67d1a073b28f93883"
+      },
+      {
+        "task": "S8-release-routing-trap",
+        "noskill": 90,
+        "noskillReportSha256": "e10777bc205a7e0b197ed6f88b40aaea3ce55d16f7f7cb0fcadb7b0974bec4d0",
+        "noskillVerdictSha256": "c6ba39a16ad23d4398a2e60ceafae9e179b338596a980ef463a230b832b695a0",
+        "skill": 100,
+        "skillReportSha256": "18fea9ac5c078513ade49c39b6a18d43bcc146318836c960289e30a3abb395c8",
+        "skillVerdictSha256": "ca2a2483aa54450f43ec0f9dba02764270f5791f06a3c1f41169a729b59b976e"
+      },
+      {
+        "task": "S9-composer-coordinate-trap",
+        "noskill": 100,
+        "noskillReportSha256": "779b4e12e8f129ffc599c00abbc9ad52d9bc29edcd445030b0df71091b12a4fe",
+        "noskillVerdictSha256": "521edf8e0b65f20b72d94e4abb9d7fdafef1716b9fba2c3eae4c2696a473bdf9",
+        "skill": 100,
+        "skillReportSha256": "3ae4f5eb0f85791766d51cd5cd3ecb33f68fad7dc3ad2e20bf36780d7a9e5a00",
+        "skillVerdictSha256": "76b50d7eb53217c3c8102ae6cee1df3426a9027e518f7e3c4eb257bcb687c0d4"
+      }
+    ]
+  },
+  "cleanExcludingExposed": {
+    "tasks": 16,
+    "totals": {
+      "noskill": 1575,
+      "skill": 1590
+    },
+    "meanDelta": 0.9375,
+    "nonZeroTasks": 2,
+    "seed": 20260907,
+    "bootstrap": {
+      "replicates": 10000,
+      "ci95": [
+        -1.875,
+        4.6875
+      ]
+    },
+    "wilcoxon": {
+      "n": 2,
+      "nZero": 14,
+      "wPlus": 2,
+      "z": 0,
+      "pTwoSided": 0.9999999989999999
+    },
+    "rows": [
+      {
+        "task": "S10-paste-rename-and-version-chip",
+        "noskill": 100,
+        "noskillReportSha256": "5ee7fc593b9eccbc7b770f0a9b6238444f1b6666500fb027ed23118dd01ed5a3",
+        "noskillVerdictSha256": "5bae2a9b5e399e6d8b0b67c78692c5870b4274692f61f3dd44e05a925bbb70c2",
+        "skill": 100,
+        "skillReportSha256": "8c3b253a063b75d399fdbc8a24bddf6a8fe175046ef4e670767911ff71558df2",
+        "skillVerdictSha256": "62cc4cf983457a4b0cf7fe4cd256527982e152389c1f1b03b631d6d02fad577b"
+      },
+      {
+        "task": "S11-mermaid-lazyload-trap",
+        "noskill": 100,
+        "noskillReportSha256": "cf231d8d260b3477f6dfef74836b7ccb7cf41e82f03cc482644acb55177765d7",
+        "noskillVerdictSha256": "85d81a37fe1a542a5a3551d0687bc7a72e39f97f69deb0078374dbae67852976",
+        "skill": 100,
+        "skillReportSha256": "52214658aaabd0a306b9f8235e160174f44e0fd566c41fd19d2d22990eedb84a",
+        "skillVerdictSha256": "9a74b6d74e70ab9a4a382b005600a038917e3cdb23f7aa79c16170552845cc28"
+      },
+      {
+        "task": "S12-global-upgrade-ebusy-trap",
+        "noskill": 100,
+        "noskillReportSha256": "5b4f66e0b18cf3f333df3bf4fd18614319805d7b3a7ceea3eaf6bc4691705ac5",
+        "noskillVerdictSha256": "2fb72330d6b265171626df3871483a87565e79ec754219ad6fc761394cbc8920",
+        "skill": 100,
+        "skillReportSha256": "37c75850db4c2c07ca56795efa44ab7912f59a82c738d92c1dfd7b534d110b2c",
+        "skillVerdictSha256": "9609c6dabb313d3fe5a14092f1afce3feb0b3e0ffcea41d64599e1d45ee690cf"
+      },
+      {
+        "task": "S13-peer-range-vs-runtime",
+        "noskill": 100,
+        "noskillReportSha256": "c598e3fa8e0bec41ace9f2fd2c0d9ba061110d8d02b3a96c50676313e4e1f1ad",
+        "noskillVerdictSha256": "0acf0feb21667ada8aaac5b6d1de7030f63188db4713af4b68c34b9570b56d30",
+        "skill": 100,
+        "skillReportSha256": "32a542baf0b3776821ffcfc7e9f36c32cdb4ddcd18663814808e11dbbfa30b4e",
+        "skillVerdictSha256": "88be3d362a62a118e733b99c92cd3ca4463385c2f41c46440364fa3d707e73ab"
+      },
+      {
+        "task": "S14-link-install-lock-trap",
+        "noskill": 100,
+        "noskillReportSha256": "c279456986f85be66a4c9da813a74b9a4adf8bf997d8ce47e7e5c801583320ec",
+        "noskillVerdictSha256": "3f6fb342a566fc9a9a83af20bf885d48699fd7b0a4ab1df239e19d5448699c5c",
+        "skill": 100,
+        "skillReportSha256": "610ae55e20c1f89f7e8dd58131a32f2c7c8a1d75d58fecd3f24ef51780b98209",
+        "skillVerdictSha256": "0b497ec1e264c9b0c67053512ea9c82991bf6e466f119dbcf3a025eca93159d5"
+      },
+      {
+        "task": "S15-slot-error-boundary-crash",
+        "noskill": 100,
+        "noskillReportSha256": "7687f5e827bf9867cab3d04f49a85d3ac9f00a2e57bac13bcb093d09b2af00aa",
+        "noskillVerdictSha256": "045315d6c587024b4bb2b3db3f840ebc5640d5738375039858360e2147b78b2d",
+        "skill": 100,
+        "skillReportSha256": "d67a2de60ac58e929d99aa9d5b3dd95f2fc40af23c24cd78876e9091e63ab0f9",
+        "skillVerdictSha256": "09f5e039e4c20d7aeb3454c54f2db7a8350dbd185b46e26e29006720474645c3"
+      },
+      {
+        "task": "S16-self-host-upgrade-trap",
+        "noskill": 100,
+        "noskillReportSha256": "d5b3a60fbf66f8d5726b31d1bdb391f6cecaba0ad414bcd94d72e538b3ae86d0",
+        "noskillVerdictSha256": "845effcc009b5b55e32b6ce24dfbbe90a676eb67f6bea569bde2b281c7fcb840",
+        "skill": 100,
+        "skillReportSha256": "3a096b3add20f0a7b7c8afe48953140f3a98c950080d1041932e405cbffcea90",
+        "skillVerdictSha256": "d7bcdb59f85a66455cd1a79b129034f9b150ecda891281ff09ce89b3c5086233"
+      },
+      {
+        "task": "S18-terminal-sprite-render-trap",
+        "noskill": 100,
+        "noskillReportSha256": "cac06a4ff1f6942edb8cc3f56bb9bc2f581617160fed0e69729fccf1616bff4c",
+        "noskillVerdictSha256": "842049b1e8c0ad29c4fca78c86ff7d8c22bf101b5aafb3f3bf4982cb7f855d66",
+        "skill": 90,
+        "skillReportSha256": "a1d172ab776ced36919ca06b946bc175d6c8a11ea5dca782dab6e70586368571",
+        "skillVerdictSha256": "1db27862996842eadde961741e7fef213f45433aca6cf2fe6d664db1206f2315"
+      },
+      {
+        "task": "S19-phantom-update-stale-host",
+        "noskill": 100,
+        "noskillReportSha256": "1c109cf027925e4c85306acecfbc0e1c531436a2281a6411139f7f4543712488",
+        "noskillVerdictSha256": "511d79af4d790a381f400619f914fda9f95e45b65b7d4beadb2becdbd4a071f5",
+        "skill": 100,
+        "skillReportSha256": "ec4f559d41460e093f8c7b54980d347730e0d0d643db49b946529896f11583d0",
+        "skillVerdictSha256": "3e3896bc54485a10152610f0ceca4de01ad8e635e39d5c31cccc973dcbc1d572"
+      },
+      {
+        "task": "S21-resource-service-unavailable-trap",
+        "noskill": 100,
+        "noskillReportSha256": "e0d776583a67a126ba597cc5689afcb6026647c2a2f4cee1190640fd61d0d8a6",
+        "noskillVerdictSha256": "b6571fb709237a43b7e2712a04b1208edf468a5a2f42ede53cea068a73f1a556",
+        "skill": 100,
+        "skillReportSha256": "a941b100ea814325eb6dcee444e9f70016823409c1f301c58bd1f2f6e4813c44",
+        "skillVerdictSha256": "f17496cf2d9100aee0710b41fd31f5c7b95e5d787d0e85b5b7844a0bcea16ed4"
+      },
+      {
+        "task": "S22-duplicate-insert-boot-crash-trap",
+        "noskill": 100,
+        "noskillReportSha256": "2ac0a8c73f30aee493d1206de93dcb313be87503dd7d428d8afdcc6d03e6ad1c",
+        "noskillVerdictSha256": "b59b0ffe650c240142f828d55a956f4fe2e6530d29037827e71b8768f725c70a",
+        "skill": 100,
+        "skillReportSha256": "1f6ddc3516e4d7eec3785f770d51aa61dbd4a300fe4a5f5c0180aced4509cfab",
+        "skillVerdictSha256": "40d64f1170d27b3ea491fd28148288b9224b13d344c002f4162eaae7902c7c4b"
+      },
+      {
+        "task": "S4-legacy-client-imports",
+        "noskill": 100,
+        "noskillReportSha256": "dea29589e27e24e6359c8185e8cbbf7acaed757a1c17f44dd476425da5910e5f",
+        "noskillVerdictSha256": "4dd261b13b26b1f0ab38e466088a31284473498681ea0171c2549e04a2850b18",
+        "skill": 100,
+        "skillReportSha256": "6d376486ea3790bec04c78e7216b083d894592fd0814576af366adf2fc567a8a",
+        "skillVerdictSha256": "cff978d1b9254f34519a21167cda854d184c60d58f10247e00c57b07e105fbc0"
+      },
+      {
+        "task": "S5-negative-naming",
+        "noskill": 100,
+        "noskillReportSha256": "c081a6236f2d3cc71fe5a1c6b30c2d0c4650d30803cfb2359c963aa745c466a4",
+        "noskillVerdictSha256": "7e9a4be6516c538b9d06adebfe674fa3d6e1e1a8661dac0f0e0bbca856110124",
+        "skill": 100,
+        "skillReportSha256": "3398c134dd308b65d64bae294d8f8cc9867810b13d4de4595cff0fc67104ae4c",
+        "skillVerdictSha256": "9ef0421f925827988e00cd2ae333e38033c766c7b43cfafbd845fa6ae1e2c0b1"
+      },
+      {
+        "task": "S6-corridor-net-state",
+        "noskill": 75,
+        "noskillReportSha256": "803d3d73bc73d499948ef5ff6e2ba6c057bcb95ba9461f6ecd13982a6f49edfb",
+        "noskillVerdictSha256": "8a3c64e4ba99fc2b3908df44630d97322d5f59c5aa8ac754ff40f4ce075a8b4f",
+        "skill": 100,
+        "skillReportSha256": "61aa6afcb8f49240a364518d405422ef46438063bfab581c1e4156b325c3d375",
+        "skillVerdictSha256": "f609587420f192dd990ad8d47b2490b885552577063a04f446a24d4cc0b634ca"
+      },
+      {
+        "task": "S7-unpublished-cohort",
+        "noskill": 100,
+        "noskillReportSha256": "93c082b270b8887d3e8f9603108b03dc65f93bbf0c1b61a9523d618971b66a40",
+        "noskillVerdictSha256": "d3314e96759847427776eb57b74650f9ac050699cf8334daa084012c740d262e",
+        "skill": 100,
+        "skillReportSha256": "de647c182ce444ae2cf2a0b10f2d49ced87f04772eb98d688be6311cc12080e5",
+        "skillVerdictSha256": "e011b233c26cf9f98b1e1e0e6049e52cc94af5f5255e27b67d1a073b28f93883"
+      },
+      {
+        "task": "S9-composer-coordinate-trap",
+        "noskill": 100,
+        "noskillReportSha256": "779b4e12e8f129ffc599c00abbc9ad52d9bc29edcd445030b0df71091b12a4fe",
+        "noskillVerdictSha256": "521edf8e0b65f20b72d94e4abb9d7fdafef1716b9fba2c3eae4c2696a473bdf9",
+        "skill": 100,
+        "skillReportSha256": "3ae4f5eb0f85791766d51cd5cd3ecb33f68fad7dc3ad2e20bf36780d7a9e5a00",
+        "skillVerdictSha256": "76b50d7eb53217c3c8102ae6cee1df3426a9027e518f7e3c4eb257bcb687c0d4"
+      }
+    ]
+  },
+  "interpretation": "Single-round descriptive supplement on a model of unverified identity; the paired interval includes zero in both the full cohort (5 of 22 nonzero differences) and the exposure-clean subset (2 of 16 nonzero differences), with most tasks at the score ceiling. No cross-model comparison is implied."
+}

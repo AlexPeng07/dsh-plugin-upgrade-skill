@@ -2,7 +2,7 @@
 % Source: benchmark/results/qwen-paired-sensitivity.json
 % Regenerate with: npm run generate:qwen-sensitivity
 
-\begin{table*}[t]
+\begin{table}[!htbp]
 \centering
 \small
 \setlength{\tabcolsep}{4pt}
@@ -33,4 +33,4 @@ Termination state & with-skill & no-skill & \\
 \end{tabular}
 \caption{Qwen3.8-27B (medium) paired run --- timeout/termination state and missing-score sensitivity (56 tasks $\times$ 2 arms $\times$ 3 intended attempts; 1 unscored slot). Missing rewards are treated as unknowns in the legal range $[0,1]$, never as $0$: the main estimate uses each task's scored trials only, and the bounds re-run the same estimator at the extremes of that range. Because $\Delta$ is with-skill minus no-skill, the lower $\Delta$ bound sets missing with-skill rewards to $0$ and missing no-skill rewards to $1$, and the upper bound does the reverse. A timeout is a termination state, not automatically a functional failure: a timed-out trial can still be scored and can still earn full marks. The non-timeout-only numbers are post-hoc and selection-biased --- they condition on a termination state that is itself associated with the arm --- so they disclose sensitivity, they do not replace the main estimate, and they carry no causal reading. All quantities are descriptive of this historical run; none is a causal claim.}
 \label{tab:qwen-sensitivity}
-\end{table*}
+\end{table}
