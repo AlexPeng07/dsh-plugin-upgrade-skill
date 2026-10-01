@@ -33,3 +33,5 @@ cp output/pdf/acl_latex.pdf output/pdf/migration-paper-retrospective-review.pdf
 本轮写作收束：以完整归档的 S16 实验和迁移契约案例为正文主线，历史及补充模型比较移至附录 B；讨论明确 API、边界和进程存活的检查问题，以及尚未验证这些检查能改善后续结果的边界。见 [改稿记录](audit/REVISION-2026-09-17-positioning.zh.md)。
 
 新增离线证据：S11 原谓词边界检查、S18 最小计时器机制对照与三个评分端点的完整符号枚举。运行 `npm run check:paper-mechanisms`；[结果与边界](audit/mechanism-checks-20260917/README.zh.md)。
+
+历史附录补充表（只渲染已提交结果，不重新调用模型）：`npm run check:qwen-sensitivity` 校验 Qwen 超时/缺失敏感性 JSON 与表（`paper/generated/qwen-paired-sensitivity-table.tex`）；`npm run check:paper-glm-robustness` 校验 GLM 历史对比稳健性表（`paper/generated/glm-robustness-table.tex`，来源 `benchmark/results/glm-pair-stability.json`），对应单元测试为 `npm run test:paper-glm-robustness`。
