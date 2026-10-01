@@ -4,7 +4,9 @@
   "checkedAnswers": 44,
   "model": "openrouter/stealth/union-alpha",
   "modelNotes": "anonymous internal-beta via OpenRouter; 256K context; pricing 0 at run time; knowledge cutoff undisclosed; snapshot date 2026-09-17",
-  "judge": "GLM-5.3-Flash (44/44 verdicts, canonical judge)",
+  "identityDisclosed": "2026-09-18: stealth/union-alpha claimed by Unbiased (unbiased.ai) as Pareto (composite model; paid openrouter/unbiased/pareto). All run data was collected 2026-09-17 under the anonymous free stealth window; scores and judging are unchanged, provenance description only.",
+  "identityStatus": "Anonymous at run time; vendor-claimed identity disclosed afterwards is unverified (composite/routed model); the free stealth route cannot be re-run.",
+  "judge": "GLM-5.3-Flash as declared by the harness (44/44 verdicts), run through dsh web in-session subagents rather than the focal ZCode host",
   "exposedTasks": [
     "S1-static-scan",
     "S2-negative-scan",
@@ -407,5 +409,5 @@
       }
     ]
   },
-  "interpretation": "Single-round descriptive supplement on an anonymous beta model; the paired interval includes zero and nonzero differences concentrate in two tasks (ceiling effects). No cross-model comparison is implied."
+  "interpretation": "Single-round descriptive supplement on a model of unverified identity; the paired interval includes zero in both the full cohort (5 of 22 nonzero differences) and the exposure-clean subset (2 of 16 nonzero differences), with most tasks at the score ceiling. No cross-model comparison is implied."
 }

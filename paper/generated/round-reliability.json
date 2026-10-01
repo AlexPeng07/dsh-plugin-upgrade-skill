@@ -21,6 +21,7 @@
             36,
             66
           ],
+          "meanSpreadExcludingS17": 10,
           "widestTasks": [
             {
               "task": "S13-peer-range-vs-runtime",
@@ -68,6 +69,7 @@
             44,
             66
           ],
+          "meanSpreadExcludingS17": 5.476190476190476,
           "widestTasks": [
             {
               "task": "S13-peer-range-vs-runtime",
@@ -130,6 +132,7 @@
             49,
             66
           ],
+          "meanSpreadExcludingS17": 5.9523809523809526,
           "widestTasks": [
             {
               "task": "S17-external-ui-plugin-onboarding-trap",
@@ -177,6 +180,7 @@
             49,
             66
           ],
+          "meanSpreadExcludingS17": 4.642857142857143,
           "widestTasks": [
             {
               "task": "S4-legacy-client-imports",
@@ -219,5 +223,5 @@
       }
     }
   },
-  "interpretation": "Descriptive round-to-round stability of archived scores; not a designed reliability study. Rounds differ in judge and protocol details (see the supplement sections), so agreement reflects run-plus-judge stability combined."
+  "interpretation": "Descriptive round-to-round stability of archived scores; not a designed reliability study and no significance test was run. Rounds differ in judge and protocol details (see the supplement sections), so agreement reflects run-plus-judge stability combined. For GLM-5.3 the arms tie on median spread (0 vs 0) and exact three-round agreement (14/22 each); the mean-spread gap is driven mostly by the S17 no-skill swing (round-three contradiction cap and judge change). With-skill scores are near the ceiling, so a smaller spread there is partly mechanical; no arm is claimed to be more stable."
 }
