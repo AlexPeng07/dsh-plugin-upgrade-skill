@@ -1,0 +1,36 @@
+{
+  "model": "zai/glm-5.3-flash",
+  "judge_model": "zai/glm-5.3-flash",
+  "judge_status": "DONE — 12/12 verdicts via glm-5.3-flash in-session judge subagents; scores recomputed with each task's scoreDecisions from the repo at e91f17b; judge verdicts under judge/{noskill,skill}/",
+  "harness": "dsh web (in-session subagents, background parallel, one attempt per task per arm)",
+  "base_commit": "e91f17b",
+  "round": "S23/S24 round 3 of 3 (this round: GLM-5.3-flash; round 1 GLM-5.3; round 2 GLM-5.2)",
+  "protocol": "R1 single attempt; same protocol as rounds 1-2; noskill forbidden from skills/ and solution/tests; skill arm given skills/plugin-upgrade only; fixture hashes verified post-run; noskill exposure audit clean",
+  "execution_notes": [
+    "Four solver subagents launched in parallel after the session model was switched to GLM-5.3-flash; all four completed, no relaunch or quota interruption.",
+    "Reports: noskill/S23 13409B, skill/S23 14754B, noskill/S24 14910B, skill/S24 14353B.",
+    "Judge-model equality with this round's solver model is a protocol deviation of the same kind as the glm-5.3 round-3 precedent; disclosed and not median-adjusted."
+  ],
+  "totals": {
+    "noskill": 180,
+    "skill": 190,
+    "max": 200,
+    "lift": 10
+  },
+  "scores_detail": {
+    "S23": {
+      "noskill": 80,
+      "noskill_decisions": "pass,pass,partial,pass,partial",
+      "skill": 90,
+      "skill_decisions": "pass,pass,pass,partial,pass",
+      "delta": 10
+    },
+    "S24": {
+      "noskill": 100,
+      "noskill_decisions": "pass,pass,pass,pass,pass",
+      "skill": 100,
+      "skill_decisions": "pass,pass,pass,pass,pass",
+      "delta": 0
+    }
+  }
+}

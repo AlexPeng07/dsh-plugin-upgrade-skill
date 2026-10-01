@@ -1,0 +1,16 @@
+[
+  {
+    "task": "S23-passing-compat-guard-trap",
+    "method": "llm-rubric",
+    "noskill": 80,
+    "skill": 90,
+    "notes": ""
+  },
+  {
+    "task": "S24-dock-cotenant-crash-trap",
+    "method": "llm-rubric",
+    "noskill": 100,
+    "skill": 100,
+    "notes": ""
+  }
+]

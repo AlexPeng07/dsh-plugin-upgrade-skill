@@ -1,0 +1,37 @@
+{
+  "model": "zai/glm-5.3",
+  "judge_model": "zai/glm-5.3-flash",
+  "judge_status": "DONE — 12/12 verdicts via glm-5.3-flash in-session judge subagents; scores recomputed with each task's scoreDecisions from the repo at e91f17b; judge verdicts under judge/{noskill,skill}/",
+  "harness": "dsh web (in-session subagents, background parallel, one attempt per task per arm)",
+  "base_commit": "e91f17b",
+  "round": "S23/S24 round 1 of 3 (this round: GLM-5.3; round 2 GLM-5.2; round 3 GLM-5.3-flash)",
+  "protocol": "R1 single attempt; tasks S23-passing-compat-guard-trap + S24-dock-cotenant-crash-trap; noskill arm forbidden from skills/ and solution/tests; skill arm given skills/plugin-upgrade only; fixtures verified unchanged against tests/packet.json hashes after both arms; noskill exposure audit clean (no skills/ or SKILL.md citations); skill-arm observed use: S23 cites card DSH-0.1.6-A2-01, S24 cites the alpha.2 migration corridor card",
+  "execution_notes": [
+    "Four solver subagents launched in parallel (S23/S24 x noskill/skill); all four completed with no relaunch or quota interruption.",
+    "Reports: noskill/S23 15123B, skill/S23 13419B, noskill/S24 13826B, skill/S24 14029B.",
+    "Fixture copies per arm verified against packet fixture sha256 maps (7 files S23, 9 files S24; zero changed, zero missing)."
+  ],
+  "solver_prompt": "instruction.md with /app paths rewritten to local run dirs; arm-specific skill clause; read-only fixture; solution/tests off-limits; single report.md per solver",
+  "totals": {
+    "noskill": 180,
+    "skill": 190,
+    "max": 200,
+    "lift": 10
+  },
+  "scores_detail": {
+    "S23": {
+      "noskill": 80,
+      "noskill_decisions": "pass,pass,pass,partial,partial",
+      "skill": 90,
+      "skill_decisions": "pass,pass,pass,pass,partial",
+      "delta": 10
+    },
+    "S24": {
+      "noskill": 100,
+      "noskill_decisions": "pass,pass,pass,pass,pass",
+      "skill": 100,
+      "skill_decisions": "pass,pass,pass,pass,pass",
+      "delta": 0
+    }
+  }
+}

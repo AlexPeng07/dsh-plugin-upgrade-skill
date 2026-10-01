@@ -1,0 +1,36 @@
+{
+  "decisions": [
+    {
+      "id": "silent-break-attribution",
+      "verdict": "pass",
+      "reason": "Walks resolve() to the exact failing read sessions.list.getSnapshot().current, correctly explains it now yields undefined (never throws), so resolve returns null and onKeyDown exits before preventDefault, leaving the chord unswallowed. Explains both silences: the four probes check service-member presence only, all of which survive, and undefined was a designed no-session state. It does not claim the service or guard was removed."
+    },
+    {
+      "id": "evidence-mapping",
+      "verdict": "pass",
+      "reason": "Full type walk: SessionListState.current gone and navigation moved to view owners per the ISessions.list doc comment; canonical replacement is uiSession.adapter.current (ObservableSnapshot<SessionBindingValue>) yielding key/ctx/hooks/keyedHooks/props, with key replacing current and ctx replacing sessions.scope(id). Uses card DSH-0.1.6-A2-01 as a cross-check, not as a substitute for the type walk."
+    },
+    {
+      "id": "dual-host-migration",
+      "verdict": "pass",
+      "reason": "Concrete fenced code reads uiSession.adapter.current.getSnapshot() when present and falls back to legacy current + sessions.scope() from one build; inject gains 'uiSession'; conversation resolves via bindingSnapshot.ctx.get('conversation') and input.for receives that scope. Handles the key===undefined absent-binding state and even discusses inject wiring choices."
+    },
+    {
+      "id": "guard-hardening",
+      "verdict": "pass",
+      "reason": "Names the class (field-level removal behind service-level stability, activation-only check) and gives a hardened guard that probes actual snapshot values ('current' in snap on legacy hosts, key/ctx on uiSession hosts) rather than expanding presence lists, and requires the probe to re-run at first real event so it is not activation-only."
+    },
+    {
+      "id": "verification-and-prevention",
+      "verdict": "pass",
+      "reason": "Proposes static/console-based verification on both hosts without migration (probe adapter.current with one session open, behavioral matrix, legacy-read dead check) and names the single host-side change: keep current as a throwing/loudly-logging deprecated getter on the published snapshot. Does not claim to have executed anything."
+    }
+  ],
+  "caps": [
+    {
+      "id": "slot-reregistration-misdiagnosis",
+      "triggered": false,
+      "reason": "The report explicitly rejects the colleague's re-register-slot/re-declare-inject suggestion as a wrong diagnosis and its final remedy is the dual-host resolution code fix; the inject addition is accompanied by the code change, not offered alone."
+    }
+  ]
+}
