@@ -160,8 +160,8 @@ export function renderTable(doc) {
     `\\quad median-of-task-deltas statistic & ${fmt(strong.median, { signed: true })} \\\\`,
     `\\quad rounds 1 / 2 / 3 & ${roundValues(strongRounds)} \\\\`,
     '\\midrule',
-    `Spearman $\\rho$ (no-skill baseline vs.\\ gain), glm-5.3-flash & ${fmt(flashRho)} \\\\`,
-    `Spearman $\\rho$ (no-skill baseline vs.\\ gain), glm-5.2 & ${fmt(strongRho)} \\\\`,
+    `Spearman $\\rho$ (no-skill baseline vs.\\ gain), glm-5.3-flash & ${fmt(flashRho).replace(/^-(?=\d)/, '$-$')} \\\\`,
+    `Spearman $\\rho$ (no-skill baseline vs.\\ gain), glm-5.2 & ${fmt(strongRho).replace(/^-(?=\d)/, '$-$')} \\\\`,
     '\\bottomrule',
     '\\end{tabular}',
     '\\caption{Stability checks for the historical GLM contrast (retrospective, exploratory; source '
