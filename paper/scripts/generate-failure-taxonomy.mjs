@@ -1,11 +1,19 @@
 // Generate the failure-mode taxonomy assets from the hand-coded task corpus.
-// Coding source of truth: the CODING array below. The script asserts it covers
-// every benchmark/tasks entry, so a newly added task fails --check until coded.
+// Coding source of truth: the CODING array below. The coded corpus is pinned to
+// CORPUS_COMMIT: the script asserts that CODING matches exactly the task list at
+// that commit. Tasks added to benchmark/tasks later are reported as a warning
+// (not a failure), so adding a benchmark task does not break `npm run validate`.
+// The submitted arXiv/JSS version (SUBMITTED_COMMIT) had 63 tasks; S23 and S24
+// were added after submission.
 import fs from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import path from 'node:path'
 import assert from 'node:assert/strict'
 import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('../..', import.meta.url))
+const CORPUS_COMMIT = 'e91f17b'
+const SUBMITTED_COMMIT = '094a81a'
+const POST_SUBMISSION = ['S23-passing-compat-guard-trap', 'S24-dock-cotenant-crash-trap']
 const C = (id, loudness, radius, basis) => ({ id, loudness, radius, basis })
 const CODING = [
   C("S1-static-scan", "procedural", "none", "coverage scan exercise, no single incident"),
@@ -74,18 +82,28 @@ const CODING = [
   C("H26-notlisted-trap", "silent", "local", "installs cleanly, never registers"),
   C("H27-undeclared-import-trap", "loud", "local", "ERR_MODULE_NOT_FOUND at load"),
 ]
-const taskDirs = fs.readdirSync(path.join(root, 'benchmark/tasks')).filter(d => /^[SMH]\d/.test(d)).sort()
+const isTask = d => /^[SMH]\d/.test(d)
+const tasksAt = commit => execFileSync('git', ['ls-tree', '--name-only', commit + ':benchmark/tasks'], { cwd: root, encoding: 'utf8' }).split('\n').filter(isTask).sort()
 const coded = new Set(CODING.map(c => c.id))
-assert.deepEqual([...coded].filter(c => !taskDirs.includes(c)), [], 'coded tasks missing from benchmark/tasks')
-assert.deepEqual(taskDirs.filter(t => !coded.has(t)), [], 'benchmark/tasks entries without taxonomy coding')
+assert.equal(coded.size, CODING.length, 'duplicate task ids in CODING')
+const pinned = tasksAt(CORPUS_COMMIT)
+assert.deepEqual([...coded].sort(), pinned, 'CODING must match the task list at ' + CORPUS_COMMIT)
+const submitted = tasksAt(SUBMITTED_COMMIT)
+assert.deepEqual(pinned.filter(t => !submitted.includes(t)), POST_SUBMISSION, 'post-submission additions')
+assert.deepEqual(submitted.filter(t => !pinned.includes(t)), [], 'tasks removed since submission')
+const current = fs.readdirSync(path.join(root, 'benchmark/tasks')).filter(isTask).sort()
+const uncoded = current.filter(t => !coded.has(t))
+const removed = pinned.filter(t => !current.includes(t))
+if (uncoded.length) console.warn('warning: benchmark tasks added after ' + CORPUS_COMMIT + ' are not in the coded taxonomy corpus: ' + uncoded.join(', '))
+if (removed.length) console.warn('warning: coded tasks no longer in benchmark/tasks: ' + removed.join(', '))
 const LOUD = ['silent', 'misdirected', 'loud']
 const RADIUS = ['local', 'cotenant', 'system']
 const incident = CODING.filter(c => c.loudness !== 'procedural')
 const counts = Object.fromEntries(LOUD.map(l => [l, Object.fromEntries(RADIUS.map(r => [r, incident.filter(c => c.loudness === l && c.radius === r).length]))]))
 const byLoudness = Object.fromEntries(LOUD.map(l => [l, incident.filter(c => c.loudness === l).length]))
 const byRadius = Object.fromEntries(RADIUS.map(r => [r, incident.filter(c => c.radius === r).length]))
-const output = { coding: CODING, incidentTasks: incident.length, proceduralTasks: CODING.length - incident.length, counts, byLoudness, byRadius,
-  interpretation: 'Author-coded from task provenance (fleet incidents and release diffs); single-coder, not independently annotated. loudness=silent|misdirected|loud, radius=local|cotenant|system.' }
+const output = { corpusCommit: CORPUS_COMMIT, corpusTasks: CODING.length, submittedCommit: SUBMITTED_COMMIT, submittedTasks: submitted.length, postSubmissionTasks: POST_SUBMISSION, coding: CODING, incidentTasks: incident.length, proceduralTasks: CODING.length - incident.length, counts, byLoudness, byRadius,
+  interpretation: 'Descriptive characterization of the task corpus pinned at corpusCommit. Coded by a single coder (one author) from task provenance (fleet incidents and release diffs; some tasks are composite or constructed exercises, e.g. H8); not independently annotated. Counts describe this corpus, not ecosystem frequencies, and are not linked to scores or judge errors. loudness=silent|misdirected|loud, radius=local|cotenant|system.' }
 const cell = (l, r) => { const ids = incident.filter(c => c.loudness === l && c.radius === r).map(c => c.id.split('-')[0]); const n = counts[l][r]; return n === 0 ? '---' : n + (ids.length ? ' (' + ids.slice(0, 6).join(', ') + (ids.length > 6 ? ', \\ldots' : '') + ')' : '') }
 const row = (label, l) => label + ' & ' + cell(l, 'local') + ' & ' + cell(l, 'cotenant') + ' & ' + cell(l, 'system') + ' \\\\'
 const summary = [
@@ -94,7 +112,7 @@ const summary = [
   ' & plugin-local & co-tenant & system \\\\', '\\midrule',
   row('silent', 'silent'), row('misdirected', 'misdirected'), row('loud', 'loud'),
   '\\bottomrule', '\\end{tabular}',
-  '\\caption{Failure-mode taxonomy of the ' + incident.length + ' incident-derived tasks (of ' + CODING.length + ' total; the rest are procedural controls), coded by first-observable-failure loudness and blast radius. Author-coded from task provenance; single-coder.}',
+  '\\caption{Failure-mode coding of the ' + incident.length + ' tasks with a codable first failure, out of the ' + CODING.length + ' benchmark tasks at commit \\texttt{' + CORPUS_COMMIT + '} (the other ' + (CODING.length - incident.length) + ' are procedural controls; S23 and S24 were added after the submitted version \\texttt{' + SUBMITTED_COMMIT + '}), by loudness of the first observable failure and blast radius. Single coder (one author), coded from task provenance; counts describe this corpus, not ecosystem frequencies.}',
   '\\label{tab:taxonomy}', '\\end{table}', ''
 ].join('\n')
 const esc = s => s.replace(/&/g, '\\&').replace(/_/g, '\\_').replace(/%/g, '\\%')
@@ -102,8 +120,10 @@ const rows = CODING.slice().sort((a, b) => a.id.localeCompare(b.id, undefined, {
   esc(c.id) + ' & ' + (c.loudness === 'procedural' ? 'procedural' : c.loudness) + ' & ' + (c.radius === 'none' ? '---' : c.radius) + ' & ' + esc(c.basis) + ' \\\\').join('\n')
 const full = [
   '% AUTO-GENERATED by paper/scripts/generate-failure-taxonomy.mjs. DO NOT EDIT.',
-  '\\begin{longtable}{p{4.6cm}llp{6.2cm}}', '\\toprule',
-  'Task & Loudness & Radius & Basis \\\\', '\\midrule', '\\endhead', '\\label{tab:taxonomy_full}',
+  '\\begin{longtable}{p{4.6cm}llp{6.2cm}}',
+  '\\caption{Per-task failure-mode coding of the ' + CODING.length + ' benchmark tasks at commit \\texttt{' + CORPUS_COMMIT + '}.}\\label{tab:taxonomy_full}\\\\',
+  '\\toprule', 'Task & Loudness & Radius & Basis \\\\', '\\midrule', '\\endfirsthead',
+  '\\toprule', 'Task & Loudness & Radius & Basis \\\\', '\\midrule', '\\endhead',
   rows, '\\bottomrule', '\\end{longtable}', ''
 ].join('\n')
 const target = (name, content) => { const p = path.join(root, 'paper/generated', name); const serialized = content + '\n'; if (process.argv.includes('--check')) assert.equal(fs.readFileSync(p, 'utf8'), serialized); else fs.writeFileSync(p, serialized) }

@@ -1,4 +1,12 @@
 {
+  "corpusCommit": "e91f17b",
+  "corpusTasks": 65,
+  "submittedCommit": "094a81a",
+  "submittedTasks": 63,
+  "postSubmissionTasks": [
+    "S23-passing-compat-guard-trap",
+    "S24-dock-cotenant-crash-trap"
+  ],
   "coding": [
     {
       "id": "S1-static-scan",
@@ -420,5 +428,5 @@
     "cotenant": 4,
     "system": 5
   },
-  "interpretation": "Author-coded from task provenance (fleet incidents and release diffs); single-coder, not independently annotated. loudness=silent|misdirected|loud, radius=local|cotenant|system."
+  "interpretation": "Descriptive characterization of the task corpus pinned at corpusCommit. Coded by a single coder (one author) from task provenance (fleet incidents and release diffs; some tasks are composite or constructed exercises, e.g. H8); not independently annotated. Counts describe this corpus, not ecosystem frequencies, and are not linked to scores or judge errors. loudness=silent|misdirected|loud, radius=local|cotenant|system."
 }
