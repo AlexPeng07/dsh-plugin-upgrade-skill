@@ -1,0 +1,50 @@
+{
+  "glm53": {
+    "S23": {
+      "noskill": 80,
+      "noskill_decisions": "pass,pass,pass,partial,partial",
+      "skill": 90,
+      "skill_decisions": "pass,pass,pass,pass,partial",
+      "delta": 10
+    },
+    "S24": {
+      "noskill": 100,
+      "noskill_decisions": "pass,pass,pass,pass,pass",
+      "skill": 100,
+      "skill_decisions": "pass,pass,pass,pass,pass",
+      "delta": 0
+    }
+  },
+  "glm52": {
+    "S23": {
+      "noskill": 90,
+      "noskill_decisions": "pass,pass,pass,pass,partial",
+      "skill": 100,
+      "skill_decisions": "pass,pass,pass,pass,pass",
+      "delta": 10
+    },
+    "S24": {
+      "noskill": 100,
+      "noskill_decisions": "pass,pass,pass,pass,pass",
+      "skill": 100,
+      "skill_decisions": "pass,pass,pass,pass,pass",
+      "delta": 0
+    }
+  },
+  "glm53flash": {
+    "S23": {
+      "noskill": 80,
+      "noskill_decisions": "pass,pass,partial,pass,partial",
+      "skill": 90,
+      "skill_decisions": "pass,pass,pass,partial,pass",
+      "delta": 10
+    },
+    "S24": {
+      "noskill": 100,
+      "noskill_decisions": "pass,pass,pass,pass,pass",
+      "skill": 100,
+      "skill_decisions": "pass,pass,pass,pass,pass",
+      "delta": 0
+    }
+  }
+}

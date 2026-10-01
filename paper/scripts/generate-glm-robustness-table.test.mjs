@@ -352,17 +352,18 @@ test('INPUT_PATH pins the merged #238 authority consumed by the paper table', ()
 
 test('paper GLM-robustness text acknowledges the glm-5.3 run and qualifies its claims', () => {
   const paper = readFileSync(join(REPO_ROOT, 'paper/latex/acl_latex.tex'), 'utf8')
-  const start = paper.indexOf('\\label{sec:glm-robustness}')
+  const start = paper.indexOf('Within the historical GLM pair')
   const end = paper.indexOf('\\input{../generated/glm-robustness-table.tex}')
-  assert.ok(start > 0 && end > start, 'GLM robustness subsection present')
+  assert.ok(start > 0 && end > start, 'GLM robustness paragraph present in the historical appendix')
   const section = paper.slice(start, end)
+  assert.match(section, /tab:glm-robustness/)
   // The flash vs glm-5.2 pair is no longer the only within-family S1–S22 comparison.
   assert.doesNotMatch(section, /only within-family comparison/)
-  assert.match(section, /glm-5\.3 run on the same pool/)
-  assert.match(section, /\+1\.59/)
+  assert.match(section, /GLM-5\.3 rounds on the same pool/)
+  assert.match(section, /1\.59/)
   assert.match(section, /mixed-judge/)
   // 3 of 22 glm-5.2 tasks used keyword judges, so "same-family" is qualified.
-  assert.match(section, /19 of the 22 glm-5\.2 tasks/)
+  assert.match(section, /19 of the 22 GLM-5\.2 tasks/)
   // The mean-reduced contrast is a point estimate with no interval.
   assert.match(section, /\+5\.59/)
   assert.match(section, /point estimate only/)

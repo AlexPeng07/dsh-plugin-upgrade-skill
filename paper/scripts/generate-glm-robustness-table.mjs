@@ -14,7 +14,7 @@
 //
 // Output (committed to the repo):
 //   paper/generated/glm-robustness-table.tex — booktabs table,
-//   label tab:glm-robustness, \input by the Results section.
+//   label tab:glm-robustness, \input by the historical-configurations appendix.
 //
 // Determinism: pure string templates, no timestamps, no host paths; the same
 // JSON always yields byte-identical output.
@@ -165,9 +165,9 @@ export function renderTable(doc) {
     '\\bottomrule',
     '\\end{tabular}',
     '\\caption{Stability checks for the historical GLM contrast (retrospective, exploratory; source '
-      + '\\texttt{' + INPUT_PATH.replaceAll('_', '\\_') + '}, PR~\\#238). The direct contrast is the per-task '
+      + '\\texttt{' + INPUT_PATH.replaceAll('_', '\\_') + '}). The direct contrast is the per-task '
       + 'difference of differences over the 22 shared S1--S22 tasks, resampled at the task level exactly '
-      + 'as in the main paired analysis; the leave-one-task-out range re-estimates it with each task '
+      + 'as in the historical paired analysis (Table~\\ref{tab:paired_effect}); the leave-one-task-out range re-estimates it with each task '
       + 'removed in turn. Round rows are descriptive per-round mean deltas, not independent replications '
       + 'of the task set. Spearman correlations between the no-skill baseline and the gain are partly '
       + 'mechanical because both terms contain the no-skill score, so they are reported as descriptive '
