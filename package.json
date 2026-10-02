@@ -69,7 +69,7 @@
     "validate:workflow": "node skills/plugin-workflow/scripts/plan-workflow.check.mjs",
     "test:release": "node --test skills/plugin-release/scripts/verify-release.test.mjs",
     "test:audit": "node skills/dsh-upgrade-audit/scripts/gen-artifacts.check.mjs",
-    "test:dsh:cases": "node benchmark/runtime/verify.mjs --check",
+    "test:dsh:cases": "node benchmark/runtime/verify.mjs --check && node --test benchmark/runtime/toolchain.test.mjs",
     "test:dsh": "node benchmark/runtime/verify.mjs --all",
     "prepare:ci": "node scripts/fetch-snapshot-commits.mjs",
     "test:composition": "node --test benchmark/scripts/skill-composition.test.mjs",
