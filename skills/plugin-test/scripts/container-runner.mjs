@@ -185,11 +185,13 @@ async function stopServer(child, graceSeconds) {
     }
     return { name: 'teardown', status: 'passed', exitCode: child.exitCode, durationMs: Date.now() - startedAt }
   }
-  child.kill('SIGTERM')
+  const sentSigterm = child.kill('SIGTERM')
   if (await waitForExit(child, graceSeconds * 1000)) {
     // A prompt exit is not necessarily a successful shutdown: disposal hooks
-    // can fail, or the process can crash while handling SIGTERM.
-    if (child.exitCode !== 0 && child.signalCode !== 'SIGTERM') {
+    // can fail, or the process can crash while handling SIGTERM. POSIX wrappers
+    // may encode the requested signal as 128 + 15 instead of a native signal.
+    const wrapperSigterm = sentSigterm && child.exitCode === 143
+    if (child.exitCode !== 0 && child.signalCode !== 'SIGTERM' && !wrapperSigterm) {
       const reason = child.signalCode ? `signal ${child.signalCode}` : `exit code ${child.exitCode}`
       throw new SmokeFailure('teardown', `start process failed during shutdown with ${reason}`, {
         exitCode: child.exitCode,

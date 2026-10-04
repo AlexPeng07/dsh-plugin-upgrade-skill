@@ -13,7 +13,7 @@ const runner = fileURLToPath(new URL('./container-runner.mjs', import.meta.url))
 // but replace every package-manager command so they need no Docker or network.
 const options = { skip: process.platform === 'win32', timeout: 15_000 }
 
-async function runFixture(t, shutdown, { probeExitCode, exitBeforeTeardown } = {}) {
+async function runFixture(t, shutdown, { probeExitCode, exitBeforeTeardown, wrapStart = false } = {}) {
   const root = await mkdtemp(join(tmpdir(), 'dsh-smoke-teardown-'))
   t.after(() => rm(root, { recursive: true, force: true }))
   const prefix = join(root, 'toolchain')
@@ -57,6 +57,17 @@ async function runFixture(t, shutdown, { probeExitCode, exitBeforeTeardown } = {
     timeoutSeconds: 2,
     shutdownGraceSeconds: 1,
     probeCommand: probeExitCode === undefined ? [] : [process.execPath, '-e', `process.exit(${probeExitCode})`],
+  }
+  if (wrapStart) {
+    const wrapper = join(root, 'start-wrapper.sh')
+    await writeFile(wrapper, [
+      '"$1" "$2" &',
+      'child=$!',
+      `trap 'kill -TERM "$child"; wait "$child"; exit 143' TERM`,
+      'wait "$child"',
+      '',
+    ].join('\n'))
+    config.startCommand = ['/bin/sh', wrapper, process.execPath, server]
   }
   if (exitBeforeTeardown !== undefined) {
     // Ensure teardown sees an already-exited server, even under scheduler load.
@@ -128,6 +139,35 @@ test('the requested SIGTERM is accepted without a custom handler', options, asyn
   assert.equal(result.status, 'passed')
   assert.equal(result.steps.at(-1).status, 'passed')
   assert.equal(result.steps.at(-1).exitCode, null)
+})
+
+test('a wrapper translating the requested SIGTERM to exit 143 passes', options, async (t) => {
+  const { child, result, report } = await runFixture(t, '', { wrapStart: true })
+  assert.equal(child.status, 0)
+  assert.equal(result.status, 'passed')
+  assert.equal(result.steps.at(-1).status, 'passed')
+  assert.equal(result.steps.at(-1).exitCode, 143)
+  assert.equal(report.status, 'passed')
+})
+
+test('exit 143 before the requested shutdown remains a failure', options, async (t) => {
+  const { child, result, report } = await runFixture(t, '', { exitBeforeTeardown: 143 })
+  assert.equal(child.status, 1)
+  assert.equal(result.failure.phase, 'teardown')
+  assert.match(result.failure.message, /before teardown with exit code 143/)
+  assert.equal(result.steps.filter((step) => step.name === 'teardown').length, 1)
+  assert.equal(report.status, 'failed')
+})
+
+test('a probe failure stays primary after a wrapper shuts down with exit 143', options, async (t) => {
+  const { child, result, report } = await runFixture(t, '', { probeExitCode: 9, wrapStart: true })
+  assert.equal(child.status, 1)
+  assert.equal(result.failure.phase, 'probe')
+  assert.equal(report.failureClassification, 'probe')
+  const teardown = result.steps.filter((step) => step.name === 'teardown')
+  assert.equal(teardown.length, 1)
+  assert.equal(teardown[0].status, 'passed')
+  assert.equal(teardown[0].exitCode, 143)
 })
 
 test('an unexpected signal during shutdown fails', options, async (t) => {
